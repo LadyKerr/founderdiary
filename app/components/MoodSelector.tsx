@@ -10,7 +10,7 @@ interface MoodSelectorProps {
 export default function MoodSelector({ selected, onSelect }: MoodSelectorProps) {
   return (
     <div>
-      <label className="mb-2 block text-xs uppercase tracking-widest text-neutral-500">
+      <label className="mb-2 block text-xs uppercase tracking-widest text-[var(--text-3)]">
         Mood
       </label>
       <div className="flex flex-wrap gap-2">
@@ -19,11 +19,17 @@ export default function MoodSelector({ selected, onSelect }: MoodSelectorProps) 
             key={mood.value}
             type="button"
             onClick={() => onSelect(mood.value)}
-            className={`rounded-lg border px-3 py-1.5 text-sm transition-all ${
-              selected === mood.value
-                ? "border-[#adf296] bg-[#adf296]/10 text-[#adf296]"
-                : "border-neutral-700 text-neutral-400 hover:border-neutral-500 hover:text-neutral-300"
-            }`}
+            className="rounded-lg border px-3 py-1.5 text-sm transition-all"
+            style={{
+              borderColor:
+                selected === mood.value ? "var(--mint)" : "var(--border-strong)",
+              backgroundColor:
+                selected === mood.value
+                  ? "color-mix(in srgb, var(--mint) 10%, transparent)"
+                  : "transparent",
+              color:
+                selected === mood.value ? "var(--mint)" : "var(--text-3)",
+            }}
           >
             <span className="mr-1.5">{mood.emoji}</span>
             {mood.label}

@@ -10,7 +10,7 @@ interface TagSelectorProps {
 export default function TagSelector({ selected, onToggle }: TagSelectorProps) {
   return (
     <div>
-      <label className="mb-2 block text-xs uppercase tracking-widest text-neutral-500">
+      <label className="mb-2 block text-xs uppercase tracking-widest text-[var(--text-3)]">
         Tags
       </label>
       <div className="flex flex-wrap gap-2">
@@ -23,9 +23,15 @@ export default function TagSelector({ selected, onToggle }: TagSelectorProps) {
               onClick={() => onToggle(tag.value)}
               className="rounded-lg border px-3 py-1.5 text-sm transition-all"
               style={{
-                borderColor: isSelected ? tag.color : "#404040",
-                backgroundColor: isSelected ? `${tag.color}15` : "transparent",
-                color: isSelected ? tag.color : "#a3a3a3",
+                borderColor: isSelected
+                  ? `var(--color-${tag.value})`
+                  : "var(--border-strong)",
+                backgroundColor: isSelected
+                  ? `color-mix(in srgb, var(--color-${tag.value}) 15%, transparent)`
+                  : "transparent",
+                color: isSelected
+                  ? `var(--color-${tag.value})`
+                  : "var(--text-3)",
               }}
             >
               {tag.label}
