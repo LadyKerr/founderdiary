@@ -1,14 +1,62 @@
 @import "tailwindcss";
 
+/* ─── Light mode (default) ─────────────────────────────────────────── */
 :root {
+  --background: #f9fafb;
+  --foreground: #111111;
+  --card: #ffffff;
+  --border: #e5e7eb;
+  --border-strong: #d1d5db;
+  --hover-bg: #f3f4f6;
+
+  /* Text hierarchy */
+  --text-1: #111111;
+  --text-2: #374151;
+  --text-3: #6b7280;
+  --text-4: #9ca3af;
+  --text-5: #d1d5db;
+
+  /* Brand accent — dark enough to read on light backgrounds */
+  --mint: #1a7a0a;
+  --pink: #9c2187;
+  --blue: #1e5fa3;
+  --yellow: #a06010;
+
+  /* Per-tag accent colors */
+  --color-product: #1a7a0a;
+  --color-marketing: #9c2187;
+  --color-content: #1e5fa3;
+  --color-ops: #a06010;
+  --color-collab: #9c2187;
+  --color-personal: #1e5fa3;
+}
+
+/* ─── Dark mode ────────────────────────────────────────────────────── */
+.dark {
   --background: #0a0a0a;
   --foreground: #ededed;
   --card: #111111;
   --border: #222222;
+  --border-strong: #404040;
+  --hover-bg: #1a1a1a;
+
+  --text-1: #f5f5f5;
+  --text-2: #d4d4d4;
+  --text-3: #737373;
+  --text-4: #525252;
+  --text-5: #3f3f3f;
+
   --mint: #adf296;
   --pink: #f396e5;
   --blue: #96c7f2;
   --yellow: #ffc947;
+
+  --color-product: #adf296;
+  --color-marketing: #f396e5;
+  --color-content: #96c7f2;
+  --color-ops: #ffc947;
+  --color-collab: #f396e5;
+  --color-personal: #96c7f2;
 }
 
 @theme inline {
@@ -24,8 +72,8 @@ body {
 }
 
 ::selection {
-  background: #adf29640;
-  color: #adf296;
+  background: color-mix(in srgb, var(--mint) 25%, transparent);
+  color: var(--mint);
 }
 
 ::-webkit-scrollbar {
@@ -37,11 +85,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;
+  background: var(--border-strong);
   border-radius: 3px;
 }
 
 input::placeholder,
 textarea::placeholder {
   font-family: inherit;
+  color: var(--text-4);
 }

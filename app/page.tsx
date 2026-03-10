@@ -86,7 +86,7 @@ export default function Home() {
     return (
       <div className="mx-auto min-h-screen max-w-2xl px-6">
         <div className="py-8">
-          <div className="h-8 w-40 animate-pulse rounded bg-neutral-800" />
+          <div className="h-8 w-40 animate-pulse rounded bg-[var(--border)]" />
         </div>
       </div>
     );
@@ -116,12 +116,12 @@ export default function Home() {
               placeholder="Search entries..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full rounded-lg border border-neutral-800 bg-[#111111] px-4 py-2.5 text-sm text-neutral-200 placeholder-neutral-600 outline-none transition-colors focus:border-neutral-600"
+              className="w-full rounded-lg border border-[var(--border)] bg-[var(--card)] px-4 py-2.5 text-sm text-[var(--text-1)] outline-none transition-colors focus:border-[var(--border-strong)]"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery("")}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-neutral-500 hover:text-neutral-300"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-[var(--text-3)] hover:text-[var(--text-1)]"
               >
                 ✕
               </button>
@@ -132,8 +132,8 @@ export default function Home() {
               onClick={() => setFilterTag(null)}
               className={`rounded-md px-2.5 py-1 text-xs transition-colors ${
                 filterTag === null
-                  ? "bg-neutral-700 text-neutral-200"
-                  : "text-neutral-500 hover:text-neutral-300"
+                  ? "bg-[var(--hover-bg)] text-[var(--text-1)]"
+                  : "text-[var(--text-3)] hover:text-[var(--text-1)]"
               }`}
             >
               All
@@ -147,9 +147,13 @@ export default function Home() {
                 className="rounded-md px-2.5 py-1 text-xs transition-colors"
                 style={{
                   backgroundColor:
-                    filterTag === tag.value ? `${tag.color}20` : "transparent",
+                    filterTag === tag.value
+                      ? `color-mix(in srgb, var(--color-${tag.value}) 20%, transparent)`
+                      : "transparent",
                   color:
-                    filterTag === tag.value ? tag.color : "#737373",
+                    filterTag === tag.value
+                      ? `var(--color-${tag.value})`
+                      : "var(--text-3)",
                 }}
               >
                 {tag.label}
@@ -164,7 +168,7 @@ export default function Home() {
       ) : (
         <div className="flex flex-col gap-3">
           {filteredEntries.length === 0 && entries.length > 0 ? (
-            <p className="py-12 text-center text-sm text-neutral-500">
+            <p className="py-12 text-center text-sm text-[var(--text-3)]">
               No entries match your search.
             </p>
           ) : (

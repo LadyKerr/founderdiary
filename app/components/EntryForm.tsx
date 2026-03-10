@@ -50,7 +50,7 @@ export default function EntryForm({ onSave, onCancel }: EntryFormProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="mb-8 rounded-xl border border-neutral-800 bg-[#111111] p-6"
+      className="mb-8 rounded-xl border border-[var(--border)] bg-[var(--card)] p-6"
     >
       <div className="mb-4">
         <input
@@ -59,10 +59,10 @@ export default function EntryForm({ onSave, onCancel }: EntryFormProps) {
           value={title}
           onChange={(e) => setTitle(e.target.value.slice(0, 120))}
           maxLength={120}
-          className="w-full bg-transparent text-lg font-semibold text-neutral-100 placeholder-neutral-600 outline-none"
+          className="w-full bg-transparent text-lg font-semibold text-[var(--text-1)] outline-none"
           autoFocus
         />
-        <div className="mt-1 text-right text-xs text-neutral-600">
+        <div className="mt-1 text-right text-xs text-[var(--text-4)]">
           {title.length}/120
         </div>
       </div>
@@ -73,7 +73,7 @@ export default function EntryForm({ onSave, onCancel }: EntryFormProps) {
           value={body}
           onChange={(e) => setBody(e.target.value)}
           rows={4}
-          className="w-full resize-none bg-transparent text-sm leading-relaxed text-neutral-300 placeholder-neutral-600 outline-none"
+          className="w-full resize-none bg-transparent text-sm leading-relaxed text-[var(--text-2)] outline-none"
         />
       </div>
 
@@ -85,20 +85,21 @@ export default function EntryForm({ onSave, onCancel }: EntryFormProps) {
         <TagSelector selected={tags} onToggle={toggleTag} />
       </div>
 
-      <div className="flex items-center justify-between border-t border-neutral-800 pt-4">
-        <span className="text-xs text-neutral-500">{getTodayDate()}</span>
+      <div className="flex items-center justify-between border-t border-[var(--border)] pt-4">
+        <span className="text-xs text-[var(--text-3)]">{getTodayDate()}</span>
         <div className="flex gap-3">
           <button
             type="button"
             onClick={onCancel}
-            className="rounded-lg px-4 py-2 text-sm text-neutral-400 transition-colors hover:text-neutral-200"
+            className="rounded-lg px-4 py-2 text-sm text-[var(--text-3)] transition-colors hover:text-[var(--text-1)]"
           >
             Cancel
           </button>
           <button
             type="submit"
             disabled={!isValid}
-            className="rounded-lg bg-[#adf296] px-5 py-2 text-sm font-semibold text-[#0a0a0a] transition-all hover:brightness-110 active:scale-95 disabled:cursor-not-allowed disabled:opacity-30"
+            className="rounded-lg px-5 py-2 text-sm font-semibold transition-all hover:brightness-110 active:scale-95 disabled:cursor-not-allowed disabled:opacity-30"
+            style={{ backgroundColor: "var(--mint)", color: "var(--background)" }}
           >
             Save Entry
           </button>
